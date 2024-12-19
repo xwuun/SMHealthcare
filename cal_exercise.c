@@ -27,6 +27,7 @@ int exercise_list_size = 0;
 */
 
 void loadExercises(const char* EXERCISEFILEPATH) {
+    char line[100];
     FILE *file = fopen(EXERCISEFILEPATH, "r");
     if (file == NULL) {
         printf("There is no file for exercises! \n");
@@ -34,11 +35,12 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while ( ) {
-    	
-        if (exercise_list_size >= MAX_EXERCISES){
-        	break;
-		}
+    while (fgets(line, sizeof(line), file)) {
+        sscanf(line,"%s %d",exercise_list[exercise_list_size].exercise_name,
+                            &exercise_list[exercise_list_size].calories_burned_per_minute);
+        exercise_list_size++;
+        //ìµœë? ê°œìˆ˜???„ë‹¬?˜ë©´ ?½ê¸°ë¥?ì¤‘ë‹¨?œë‹¤
+        if (exercise_list_size >= MAX_EXERCISES) break;
     }
 
     fclose(file);
@@ -61,16 +63,35 @@ void inputExercise(HealthData* health_data) {
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
 
-
     // ToCode: to enter the exercise to be chosen with exit option
-
- 
+    for(i=0; i<exercise_list_size; i++)
+    {
+        printf("%d : %s - %d kcal per min.\n",i,exercise_list[i].exercise_name,exercise_list[i].calories_burned_per_minute);
+    }
     
+    // ? íš¨??diet codeë¥??…ë ¥????ê¹Œì? ë°˜ë³µ?œë‹¤.
+    while(1)
+    {
+        printf("Plese input Exercise code : ");
+        scanf("%d",&choice);
+        if (choice<0 || choice>=exercise_list_size)
+        {
+            printf("Exercise code Error!!\n");
+        } 
+        else{
+            break;
+        }
+    }
     // To enter the duration of the exercise
     printf("Enter the duration of the exercise (in min.): ");
     scanf("%d", &duration);
+    int burned_cal=duration*exercise_list[choice].calories_burned_per_minute;
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-    
+    strcpy( health_data->exercises[health_data->exercise_count].exercise_name, 
+            exercise_list[choice].exercise_name);
+    health_data->exercises[health_data->exercise_count].calories_burned_per_minute = burned_cal;
+    health_data->total_calories_burned+=burned_cal;
+    health_data->exercise_count++;
 
 }

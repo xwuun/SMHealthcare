@@ -27,6 +27,7 @@ static int diet_list_size = 0;
 */
 
 void loadDiets(const char* DIETFILEPATH) {
+    char line[100];
     FILE *file = fopen(DIETFILEPATH, "r");
     if (file == NULL) {
         printf("There is no file for diets! \n");
@@ -34,11 +35,12 @@ void loadDiets(const char* DIETFILEPATH) {
     }
 
      // ToCode: to read a list of the diets from the given file
-    while () {
-    	
-        if (diet_list_size >= MAX_DIETS){
-        	break;
-		}
+    while (fgets(line, sizeof(line), file)) {
+        sscanf(line,"%s %d",diet_list[diet_list_size].food_name,
+                            &diet_list[diet_list_size].calories_intake);
+        diet_list_size++;
+        //ìµœë? ê°œìˆ˜???„ë‹¬?˜ë©´ ?½ê¸°ë¥?ì¤‘ë‹¨?œë‹¤
+        if (diet_list_size >= MAX_DIETS) break;
     }
     fclose(file);
 }
@@ -57,16 +59,40 @@ void inputDiet(HealthData* health_data) {
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
-    
+    for(i=0; i<diet_list_size; i++)
+    {
+        printf("%d : %s - %d kcal\n",i,diet_list[i].food_name,diet_list[i].calories_intake);
+    }
     
 	// ToCode: to enter the diet to be chosen with exit option
-    
-
+    // ? íš¨??diet codeë¥??…ë ¥????ê¹Œì? ë°˜ë³µ?œë‹¤.
+    while(1)
+    {
+        printf("Plese input diet code : ");
+        scanf("%d",&choice);
+        if (choice<0 || choice>=diet_list_size)
+        {
+            printf("Diet code Error!!\n");
+        } 
+        else{
+            break;
+        }
+    }
     // ToCode: to enter the selected diet in the health data
-    
+    // ?…ë ¥ë°›ë“  diet ?•ë³´ë¥?health data??ì¶”ê??œë‹¤. 
+    // ìµœë? ê°?ˆ˜???„ë‹¬?˜ì??¤ë©´ ?¤ë¥˜ë©”ì‹œì§€ ì¶œë ¥?œë‹¤.
+    if(health_data->diet_count==MAX_DIETS)
+    {
+        printf("Can't add a diet data! Storage is full!!");
+        return;
+    }
+
+    // ìµœë?ê°?ˆ˜ê°€ ?„ë‹ˆ?¼ë©´ ?€?¥í•œ??
+    health_data->diet[health_data->diet_count]=diet_list[choice];
+    health_data->diet_count++;
 
     // ToCode: to enter the total calories intake in the health data
-
-
+    health_data->total_calories_intake = diet_list[choice].calories_intake;
 }
+
 
