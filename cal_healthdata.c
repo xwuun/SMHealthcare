@@ -102,7 +102,7 @@ void printHealthData(const HealthData* health_data) {
 }
 
 /*
-    description : ?”ì—¬ ì¹¼ë¡œë¦¬ë? ê³„ì‚°?˜ëŠ” ?¨ìˆ˜
+    description : ÀÜ¿© Ä®·Î¸®¸¦ °è»êÇÏ´Â ÇÔ¼ö
 */
 int getRemainCal(const HealthData* health_data)
 {
@@ -113,38 +113,38 @@ int getRemainCal(const HealthData* health_data)
 }
 
 /*
-    description : ?¬ìš©?ì—ê²?ì¶”ì²œ?¬í•­??ì¶œë ¥?˜ëŠ” ?¨ìˆ˜
+    description : »ç¿ëÀÚ¿¡°Ô ÃßÃµ»çÇ×À» Ãâ·ÂÇÏ´Â ÇÔ¼ö
 */
 
 void recommendtaion_msg(const HealthData* health_data)
-{
-    printf("[ Recommand Message ]\n");
+{   
+    printf("[ Recommendtaion Message ] \n");
     if(getRemainCal(health_data)<0)
     {
-        printf("  * [Warning] Too few calories!!\n");
+        printf("[Warning] Too few calories!!\n");
         if(health_data->total_calories_intake == BASAL_METABOLIC_RATE)
         {
             printf(" *  Your total calories intake for today has reached your goal!\n");
         }
         else if(health_data->total_calories_intake < BASAL_METABOLIC_RATE)
         {
-            printf("  * Your total calories intake for today has not reached your goal,\n");
-            printf("  * remember to eat more!!\n");
+            printf("Your total calories intake for today has not reached your goal,\n");
+            printf("remember to eat more!!\n");
         }
         else{
-            printf("  * You have eaten more calories than planned today,\n");
-            printf("  * but you have exercised too much!!\n");
+            printf("You have eaten more calories than planned today,\n");
+            printf("but you have exercised too much!!\n");
         }
     }
     else{
         if(health_data->total_calories_intake == BASAL_METABOLIC_RATE)
         {
-            printf("  * Your total calories intake for today has reached your goal!\n");
+            printf("Your total calories intake for today has reached your goal!\n");
         }
         else if(health_data->total_calories_intake < BASAL_METABOLIC_RATE)
         {
-            printf("  * Your total calories intake for today has not reached your goal,\n");
-            printf("  * remember to eat more!!\n");
+            printf("Your total calories intake for today has not reached your goal,\n");
+            printf("remember to eat more!!\n");
         }
     }
 }

@@ -35,11 +35,11 @@ void loadDiets(const char* DIETFILEPATH) {
     }
 
      // ToCode: to read a list of the diets from the given file
-    while (fgets(line, sizeof(line), file)) {
+    while (fgets(line,sizeof(line),file)) {
         sscanf(line,"%s %d",diet_list[diet_list_size].food_name,
                             &diet_list[diet_list_size].calories_intake);
         diet_list_size++;
-        //ìµœë? ê°œìˆ˜???„ë‹¬?˜ë©´ ?½ê¸°ë¥?ì¤‘ë‹¨?œë‹¤
+        //ÃÖ´ë °³¼ö¿¡ µµ´ÞÇÏ¸é ÀÐ±â¸¦ Áß´ÜÇÑ´Ù
         if (diet_list_size >= MAX_DIETS) break;
     }
     fclose(file);
@@ -55,7 +55,7 @@ void loadDiets(const char* DIETFILEPATH) {
 */
 
 void inputDiet(HealthData* health_data) {
-    int choice, i;
+    int choice,i;
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
@@ -65,12 +65,12 @@ void inputDiet(HealthData* health_data) {
     }
     
 	// ToCode: to enter the diet to be chosen with exit option
-    // ? íš¨??diet codeë¥??…ë ¥????ê¹Œì? ë°˜ë³µ?œë‹¤.
+    // À¯È¿ÇÑ diet code¸¦ ÀÔ·ÂÇÒ ¶§ ±îÁö ¹Ýº¹ÇÑ´Ù.
     while(1)
     {
-        printf("\nPlease input diet code : ");
+        printf("\nPlese input diet code : ");
         scanf("%d",&choice);
-        if (choice<0 || choice>=diet_list_size)
+        if (choice<0||choice>=diet_list_size)
         {
             printf("Diet code Error!!\n");
         } 
@@ -80,15 +80,15 @@ void inputDiet(HealthData* health_data) {
     }
     printf("\n");
     // ToCode: to enter the selected diet in the health data
-    // ?…ë ¥ë°›ë“  diet ?•ë³´ë¥?health data??ì¶”ê??œë‹¤. 
-    // ìµœë? ê°?ˆ˜???„ë‹¬?˜ì??¤ë©´ ?¤ë¥˜ë©”ì‹œì§€ ì¶œë ¥?œë‹¤.
-    if(health_data->diet_count==MAX_DIETS)
+    // ÀÔ·Â¹Þµç diet Á¤º¸¸¦ health data¿¡ Ãß°¡ÇÑ´Ù. 
+    // ÃÖ´ë °¹¼ö¿¡ µµ´ÞÇÏ¿´´Ù¸é ¿À·ù¸Þ½ÃÁö Ãâ·ÂÇÑ´Ù.
+    if(health_data->diet_count== MAX_DIETS)
     {
         printf("Can't add a diet data! Storage is full!!");
         return;
     }
 
-    // ìµœë?ê°?ˆ˜ê°€ ?„ë‹ˆ?¼ë©´,diet ?•ë³´ë¥??€?¥í•œ??
+    // ÃÖ´ë°¹¼ö°¡ ¾Æ´Ï¶ó¸é diet Á¤º¸¸¦ ÀúÀåÇÑ´Ù
     health_data->diet[health_data->diet_count]=diet_list[choice];
     health_data->diet_count++;
 

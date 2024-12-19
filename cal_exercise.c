@@ -28,18 +28,18 @@ int exercise_list_size = 0;
 
 void loadExercises(const char* EXERCISEFILEPATH) {
     char line[100];
-    FILE *file = fopen(EXERCISEFILEPATH, "r");
+    FILE *file = fopen(EXERCISEFILEPATH,"r");
     if (file == NULL) {
         printf("There is no file for exercises! \n");
         return;
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while (fgets(line, sizeof(line), file)) {
+    while (fgets(line,sizeof(line), file)) {
         sscanf(line,"%s %d",exercise_list[exercise_list_size].exercise_name,
                             &exercise_list[exercise_list_size].calories_burned_per_minute);
         exercise_list_size++;
-        //ìµœë? ê°œìˆ˜???„ë‹¬?˜ë©´ ?½ê¸°ë¥?ì¤‘ë‹¨?œë‹¤
+        //ÃÖ´ë °³¼ö¿¡ µµ´ÞÇÏ¸é ÀÐ±â¸¦ Áß´ÜÇÑ´Ù
         if (exercise_list_size >= MAX_EXERCISES) break;
     }
 
@@ -69,12 +69,12 @@ void inputExercise(HealthData* health_data) {
         printf("%d : %s - %d kcal per min.\n",i,exercise_list[i].exercise_name,exercise_list[i].calories_burned_per_minute);
     }
     
-    // ? íš¨??diet codeë¥??…ë ¥????ê¹Œì? ë°˜ë³µ?œë‹¤.
+    // À¯È¿ÇÑ diet code¸¦ ÀÔ·ÂÇÒ ¶§ ±îÁö ¹Ýº¹ÇÑ´Ù.
     while(1)
     {
         printf("\nPlese input Exercise code : ");
         scanf("%d",&choice);
-        if (choice<0 || choice>=exercise_list_size)
+        if (choice<0||choice>=exercise_list_size)
         {
             printf("Exercise code Error!!\n");
         } 
@@ -88,11 +88,11 @@ void inputExercise(HealthData* health_data) {
     int burned_cal=duration*exercise_list[choice].calories_burned_per_minute;
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-    // ? íƒ???´ë™ ?•ë³´ë¥?health_data??ì¶”ê?
+    // ¼±ÅÃÇÑ ¿îµ¿ Á¤º¸¸¦ health_data¿¡ Ãß°¡
     strcpy( health_data->exercises[health_data->exercise_count].exercise_name, 
             exercise_list[choice].exercise_name);
     health_data->exercises[health_data->exercise_count].calories_burned_per_minute = burned_cal;
-    // ?Œëª¨??ì¹¼ë¡œë¦¬ë? ê³„ì‚°?˜ê³  ?„ì ?œë‹¤. 
+    // ¼Ò¸ðÇÑ Ä®·Î¸®¸¦ °è»êÇÏ°í ´©ÀûÇÑ´Ù. 
     health_data->total_calories_burned+=burned_cal;
     health_data->exercise_count++;
 

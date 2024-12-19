@@ -21,7 +21,7 @@ static int choice;
 
 int main() {
 	// To initialize the health data object
-    HealthData health_data = {0};
+    HealthData health_data ={0};
     
     // Tocode: to read the list of the exercises and diets
     loadDiets(DIETFILEPATH);
@@ -29,7 +29,7 @@ int main() {
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
-    	if ( getRemainCal(&health_data) == 0 ){
+    	if ( getRemainCal(&health_data) ==0 ){
             saveData(HEALTHFILEPATH, &health_data);
             printf("You have consumed all your calories for today! \n");
             printf("Exit the system.\n");
@@ -43,7 +43,7 @@ int main() {
         	printf("3. Show logged information \n");
         	printf("4. Exit \n");
         	printf("Select the desired number: ");
-        	scanf("%d", &choice);
+        	scanf("%d",&choice);
         	printf("=======================================================================\n");
         }
         
