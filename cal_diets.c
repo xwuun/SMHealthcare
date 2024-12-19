@@ -68,7 +68,7 @@ void inputDiet(HealthData* health_data) {
     // ? íš¨??diet codeë¥??…ë ¥????ê¹Œì? ë°˜ë³µ?œë‹¤.
     while(1)
     {
-        printf("Plese input diet code : ");
+        printf("\nPlease input diet code : ");
         scanf("%d",&choice);
         if (choice<0 || choice>=diet_list_size)
         {
@@ -78,6 +78,7 @@ void inputDiet(HealthData* health_data) {
             break;
         }
     }
+    printf("\n");
     // ToCode: to enter the selected diet in the health data
     // ?…ë ¥ë°›ë“  diet ?•ë³´ë¥?health data??ì¶”ê??œë‹¤. 
     // ìµœë? ê°?ˆ˜???„ë‹¬?˜ì??¤ë©´ ?¤ë¥˜ë©”ì‹œì§€ ì¶œë ¥?œë‹¤.
@@ -87,12 +88,10 @@ void inputDiet(HealthData* health_data) {
         return;
     }
 
-    // ìµœë?ê°?ˆ˜ê°€ ?„ë‹ˆ?¼ë©´ ?€?¥í•œ??
+    // ìµœë?ê°?ˆ˜ê°€ ?„ë‹ˆ?¼ë©´,diet ?•ë³´ë¥??€?¥í•œ??
     health_data->diet[health_data->diet_count]=diet_list[choice];
     health_data->diet_count++;
 
     // ToCode: to enter the total calories intake in the health data
-    health_data->total_calories_intake = diet_list[choice].calories_intake;
+    health_data->total_calories_intake += diet_list[choice].calories_intake;
 }
-
-

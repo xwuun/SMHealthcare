@@ -72,7 +72,7 @@ void inputExercise(HealthData* health_data) {
     // ? íš¨??diet codeë¥??…ë ¥????ê¹Œì? ë°˜ë³µ?œë‹¤.
     while(1)
     {
-        printf("Plese input Exercise code : ");
+        printf("\nPlese input Exercise code : ");
         scanf("%d",&choice);
         if (choice<0 || choice>=exercise_list_size)
         {
@@ -83,14 +83,16 @@ void inputExercise(HealthData* health_data) {
         }
     }
     // To enter the duration of the exercise
-    printf("Enter the duration of the exercise (in min.): ");
+    printf("\nEnter the duration of the exercise (in min.): ");
     scanf("%d", &duration);
     int burned_cal=duration*exercise_list[choice].calories_burned_per_minute;
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
+    // ? íƒ???´ë™ ?•ë³´ë¥?health_data??ì¶”ê?
     strcpy( health_data->exercises[health_data->exercise_count].exercise_name, 
             exercise_list[choice].exercise_name);
     health_data->exercises[health_data->exercise_count].calories_burned_per_minute = burned_cal;
+    // ?Œëª¨??ì¹¼ë¡œë¦¬ë? ê³„ì‚°?˜ê³  ?„ì ?œë‹¤. 
     health_data->total_calories_burned+=burned_cal;
     health_data->exercise_count++;
 
