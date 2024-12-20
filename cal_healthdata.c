@@ -138,28 +138,28 @@ void recommendation_msg(const HealthData* health_data)
     if(getRemainCal(health_data)<0) // 잔여 칼로리가 0보다 작은 경우 
     {
         printf("[Warning] Too few calories!!\n");
-        if(health_data->total_calories_intake == BASAL_METABOLIC_RATE) // 섭취한 칼로리가 기초대사량과 동일한 경우 
+        if(health_data->total_calories_intake == BASAL_METABOLIC_RATE) // 섭취 칼로리 = 기초대사량 
         {
             printf(" *  Your total calories intake for today has reached your goal!\n");
         }
-        else if(health_data->total_calories_intake < BASAL_METABOLIC_RATE) // 섭취 칼로리가 기초대사량 보다 작은 경우 
+        else if(health_data->total_calories_intake < BASAL_METABOLIC_RATE) //섭취 칼로리 < 기초대사량 
         {
             printf("Your total calories intake for today has not reached your goal,\n");
             printf("remember to eat more!!\n");
         }
-        else{ 
-			//칼로리 섭취가 초과되었으나 운동으로 인해  칼로리가 부족한 경우 
+        else //칼로리 섭취가 초과되었으나---> but 운동으로 인해  칼로리가 부족한 경우 
+		{ 
             printf("You have eaten more calories than planned today,\n");  
             printf("but you have exercised too much!!\n");
         }
     }
     else{ 
         //잔여  칼로리가 0이상인 경우 
-        if(health_data->total_calories_intake == BASAL_METABOLIC_RATE) // 섭취한 칼로리가 기초대사량과 동일한 경우 
+        if(health_data->total_calories_intake == BASAL_METABOLIC_RATE) // 섭취 칼로리 = 기초대사량 
         {
             printf("Your total calories intake for today has reached your goal!\n");
         }
-        else if(health_data->total_calories_intake < BASAL_METABOLIC_RATE) // 섭취한 칼로리가 기초대사량 보다 작은 경우 
+        else if(health_data->total_calories_intake < BASAL_METABOLIC_RATE) // 섭취칼로리 < 기초대사량 
         {
             printf("Your total calories intake for today has not reached your goal,\n");
             printf("remember to eat more!!\n");
