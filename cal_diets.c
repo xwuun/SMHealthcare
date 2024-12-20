@@ -56,7 +56,7 @@ void loadDiets(const char* DIETFILEPATH) {
 */
 
 void inputDiet(HealthData* health_data) {
-    int choice,i;
+    int choice,i; //사용자에게 입력받을 번호 
     
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
