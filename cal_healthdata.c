@@ -26,9 +26,11 @@
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
+	
 	// health_data.txt 파일에서 운동, 식단 항목 각각 총 소모된 칼로리와 섭취한 칼로리를 나타내기 위한 변수
 	int total_cal_burn=0, total_cal_intake=0;  
-    FILE* file = fopen(HEALTHFILEPATH, "w");
+    
+	FILE* file = fopen(HEALTHFILEPATH, "w");
     if (file == NULL) {
         printf("There is no file for health data.\n");
         return;
@@ -145,14 +147,14 @@ void recommendation_msg(const HealthData* health_data)
             printf("Your total calories intake for today has not reached your goal,\n");
             printf("remember to eat more!!\n");
         }
-        else{
-        	//칼로리 섭취가 초과되었으나 운동으로 인해  칼로리가 부족한 경우 
+        else{ 
+			//칼로리 섭취가 초과되었으나 운동으로 인해  칼로리가 부족한 경우 
             printf("You have eaten more calories than planned today,\n");  
             printf("but you have exercised too much!!\n");
         }
     }
     else{ 
-    //잔여  칼로리가 0이상인 경우 
+        //잔여  칼로리가 0이상인 경우 
         if(health_data->total_calories_intake == BASAL_METABOLIC_RATE) // 섭취한 칼로리가 기초대사량과 동일한 경우 
         {
             printf("Your total calories intake for today has reached your goal!\n");

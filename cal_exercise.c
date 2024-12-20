@@ -36,8 +36,8 @@ void loadExercises(const char* EXERCISEFILEPATH) {
 
     // ToCode: to read a list of the exercises from the given file
     while (fgets(line,sizeof(line), file)) {
-        sscanf(line,"%s %d",exercise_list[exercise_list_size].exercise_name, //운동이름 
-                            &exercise_list[exercise_list_size].calories_burned_per_minute); //시간당 소모한 칼로리 저장 
+        sscanf(line,"%s %d",exercise_list[exercise_list_size].exercise_name,
+                            &exercise_list[exercise_list_size].calories_burned_per_minute); //운동명, 시간당 소모한 칼로리 저장 
         exercise_list_size++; //운동 리스트 크기 증가 
         //최대 개수에 도달하면 읽기를 중단한다
         if (exercise_list_size >= MAX_EXERCISES) break;
