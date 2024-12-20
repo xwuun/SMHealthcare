@@ -29,7 +29,7 @@ int main() {
 
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
-    	if ( getRemainCal(&health_data) ==0 ){
+    	if ( getRemainCal(&health_data) ==0 ){ //getRemainCal 은 잔여 칼로리를 계산하는 함수 
             saveData(HEALTHFILEPATH, &health_data); // 현재 건강 데이터를  저장 
             printf("You have consumed all your calories for today! \n");
             printf("Exit the system.\n");
@@ -50,18 +50,15 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
-            	inputExercise(&health_data);
-            	saveData(HEALTHFILEPATH, &health_data); //데이터 저장 
+            	inputExercise(&health_data); //데이터 저장 
                 break;
                 
             case 2:
             	inputDiet(&health_data);
-            	saveData(HEALTHFILEPATH, &health_data); //데이터 저장 
                 break;
                 
             case 3:
             	printHealthData(&health_data);
-            	saveData(HEALTHFILEPATH, &health_data); //데이터 저장 
                 break;
                 
             case 4:

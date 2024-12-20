@@ -27,7 +27,7 @@ static int diet_list_size = 0;
 */
 
 void loadDiets(const char* DIETFILEPATH) {
-    char line[100]; //파일에서 읽어온 정보를 저장할 배열 
+    char line[100]; //파일에서 읽어온 글자를 저장할 배열 
     FILE *file = fopen(DIETFILEPATH, "r");
     if (file == NULL) {
         printf("There is no file for diets! \n");

@@ -1,0 +1,12 @@
+[Exercises] 
+riding - 15 kcal
+swimming - 96 kcal
+Total calories burned: 175 kcal
+
+[Diets] 
+tteokbokki - 615 kcal
+Total calories intake: 615 kcal
+
+[Total] 
+Basal metabolic rate - 1300 kcal
+The remaining calories - -796 kcal
