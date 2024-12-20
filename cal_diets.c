@@ -27,7 +27,7 @@ static int diet_list_size = 0;
 */
 
 void loadDiets(const char* DIETFILEPATH) {
-    char line[100];
+    char line[100]; //파일에서 읽어온 정보를 저장할 배열 
     FILE *file = fopen(DIETFILEPATH, "r");
     if (file == NULL) {
         printf("There is no file for diets! \n");
@@ -36,11 +36,12 @@ void loadDiets(const char* DIETFILEPATH) {
 
      // ToCode: to read a list of the diets from the given file
     while (fgets(line,sizeof(line),file)) {
-        sscanf(line,"%s %d",diet_list[diet_list_size].food_name,
-                            &diet_list[diet_list_size].calories_intake);
+        sscanf(line,"%s %d",diet_list[diet_list_size].food_name, //음식이름 저장 
+                            &diet_list[diet_list_size].calories_intake); // 섭취 칼로리 저장 
         diet_list_size++;
         //최대 개수에 도달하면 읽기를 중단한다
-        if (diet_list_size >= MAX_DIETS) break;
+        if (diet_list_size >= MAX_DIETS) 
+			break;
     }
     fclose(file);
 }
@@ -68,7 +69,7 @@ void inputDiet(HealthData* health_data) {
     // 유효한 diet code를 입력할 때 까지 반복한다.
     while(1)
     {
-        printf("\nPlese input diet code : ");
+        printf("\nPlease input diet code : ");
         scanf("%d",&choice);
         if (choice<0||choice>=diet_list_size)
         {
@@ -80,7 +81,7 @@ void inputDiet(HealthData* health_data) {
     }
     printf("\n");
     // ToCode: to enter the selected diet in the health data
-    // 입력받든 diet 정보를 health data에 추가한다. 
+    // 입력받은  diet 정보를 health data에 추가한다. 
     // 최대 갯수에 도달하였다면 오류메시지 출력한다.
     if(health_data->diet_count== MAX_DIETS)
     {
