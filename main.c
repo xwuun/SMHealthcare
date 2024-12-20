@@ -50,11 +50,13 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
-            	inputExercise(&health_data); //데이터 저장 
+            	inputExercise(&health_data);
+            	saveData(HEALTHFILEPATH, &health_data); //데이터 저장 
                 break;
                 
             case 2:
             	inputDiet(&health_data);
+            	saveData(HEALTHFILEPATH, &health_data); //데이터 저장 
                 break;
                 
             case 3:

@@ -26,7 +26,8 @@
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i;
-	int total_cal_burn, total_cal_intake;
+	// health_data.txt 파일에서 운동, 식단 항목 각각 총 소모된 칼로리와 섭취한 칼로리를 나타내기 위한 변수
+	int total_cal_burn=0, total_cal_intake=0;  
     FILE* file = fopen(HEALTHFILEPATH, "w");
     if (file == NULL) {
         printf("There is no file for health data.\n");
